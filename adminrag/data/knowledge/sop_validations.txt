@@ -1,0 +1,4 @@
+Validações recomendadas:
+- valor deve ser positivo
+- se payment_status == paid: deve ter alguma evidência (data ou auth_code) quando possível
+- registrar pendências quando campo obrigatório não for encontrado

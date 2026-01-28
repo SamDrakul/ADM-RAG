@@ -1,0 +1,24 @@
+Objetivo: extrair CPF do PAGADOR e confirmar pagamento de boletos/comprovantes.
+
+CPF alvo: CPF DO PAGADOR (pagador/cliente).
+Prioridade: encontrar CPF próximo de termos:
+- "PAGADOR", "CPF DO PAGADOR", "DADOS DO PAGADOR"
+
+Evitar confundir com:
+- CPF/CNPJ do beneficiário/cedente ("BENEFICIÁRIO", "CEDENTE", "EMITENTE")
+
+Sinais fortes de pagamento confirmado:
+- palavras: PAGO, PAGAMENTO EFETUADO, PAGAMENTO CONFIRMADO, TRANSACAO EFETUADA, LIQUIDADO, QUITADO
+- presença de AUTENTICACAO / AUTENTICAÇÃO / código de autenticação/transação
+- data/hora de operação
+
+Campos prioritários:
+- cpf (pagador)
+- payment_status: paid/unpaid/unknown
+- payment_date (preferir dd/mm/aaaa -> yyyy-mm-dd)
+- total_value (R$)
+- auth_code (se houver)
+
+Se OCR estiver ruidoso:
+- aceite pequenas variações
+- use null quando incerto e registre em notes.
